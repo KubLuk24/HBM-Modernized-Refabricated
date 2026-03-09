@@ -5,6 +5,7 @@ import com.hbm.doors.block.CustomDoorBlock;
 import com.hbm.doors.block.SimpleDoorBlock;
 import com.hbm.doors.door.DoorType;
 import net.minecraft.block.*;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
