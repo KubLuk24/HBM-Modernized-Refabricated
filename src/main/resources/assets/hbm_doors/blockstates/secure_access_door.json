@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "hbm_doors:block/secure_access_door"
+    },
+    "facing=south": {
+      "model": "hbm_doors:block/secure_access_door",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "hbm_doors:block/secure_access_door",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "hbm_doors:block/secure_access_door",
+      "y": 90
+    }
+  }
+}

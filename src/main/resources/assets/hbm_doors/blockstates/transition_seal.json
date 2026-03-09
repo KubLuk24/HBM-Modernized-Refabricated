@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "hbm_doors:block/transition_seal"
+    },
+    "facing=south": {
+      "model": "hbm_doors:block/transition_seal",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "hbm_doors:block/transition_seal",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "hbm_doors:block/transition_seal",
+      "y": 90
+    }
+  }
+}

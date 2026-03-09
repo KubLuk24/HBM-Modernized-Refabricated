@@ -1,0 +1,16 @@
+{
+  "itemgroup.hbm_doors.doors": "HBM Doors",
+  "block.hbm_doors.large_vehicle_door": "Large Vehicle Door",
+  "block.hbm_doors.round_airlock_door": "Round Airlock Door",
+  "block.hbm_doors.transition_seal": "Transition Seal",
+  "block.hbm_doors.fire_door": "Fire Door",
+  "block.hbm_doors.sliding_blast_door": "Sliding Blast Door",
+  "block.hbm_doors.sliding_seal_door": "Sliding Seal Door",
+  "block.hbm_doors.secure_access_door": "Secure Access Door",
+  "block.hbm_doors.qe_sliding_door": "QE Sliding Door",
+  "block.hbm_doors.qe_containment_door": "QE Containment Door",
+  "block.hbm_doors.water_door": "Water Door",
+  "block.hbm_doors.silo_hatch": "Silo Hatch",
+  "block.hbm_doors.silo_hatch_large": "Large Silo Hatch",
+  "block.hbm_doors.vault_door": "Vault Door"
+}
