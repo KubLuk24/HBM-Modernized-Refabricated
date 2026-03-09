@@ -52,6 +52,8 @@ public class DoorBlockEntityRenderer implements BlockEntityRenderer<DoorBlockEnt
         ObjModel model = ObjLoader.load(MinecraftClient.getInstance().getResourceManager(), modelId);
         if (model == null) return;
 
+        Identifier textureId = doorType.getTextureId();
+
         matrices.push();
 
         Direction facing = entity.getCachedState().get(CustomDoorBlock.FACING);
@@ -88,7 +90,7 @@ public class DoorBlockEntityRenderer implements BlockEntityRenderer<DoorBlockEnt
             matrices.translate(-orig[0], -orig[1], -orig[2]);
             matrices.translate(trans[0], trans[1], trans[2]);
 
-            renderPart(part, matrices, vertexConsumers, light, overlay);
+            renderPart(part, textureId, matrices, vertexConsumers, light, overlay);
 
             matrices.pop();
         }
@@ -96,9 +98,9 @@ public class DoorBlockEntityRenderer implements BlockEntityRenderer<DoorBlockEnt
         matrices.pop();
     }
 
-    private void renderPart(ObjPart part, MatrixStack matrices, VertexConsumerProvider vertexConsumers,
+    private void renderPart(ObjPart part, Identifier textureId, MatrixStack matrices, VertexConsumerProvider vertexConsumers,
                             int light, int overlay) {
-        VertexConsumer consumer = vertexConsumers.getBuffer(RenderLayer.getSolid());
+        VertexConsumer consumer = vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(textureId));
         Matrix4f posMatrix = matrices.peek().getPositionMatrix();
         Matrix3f normalMatrix = matrices.peek().getNormalMatrix();
 

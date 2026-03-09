@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "minecraft:block/iron_block"
+    "layer0": "hbm_doors:block/doors/sliding_blast_door"
   }
 }

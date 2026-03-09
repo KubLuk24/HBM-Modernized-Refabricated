@@ -2,6 +2,7 @@ package com.hbm.doors.door;
 
 import com.hbm.doors.registry.ModSounds;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 public enum DoorType {
@@ -37,6 +38,10 @@ public enum DoorType {
     public String getId() { return id; }
     public int getOpenTime() { return openTime; }
     public String[] getPartNames() { return partNames; }
+
+    public Identifier getTextureId() {
+        return new Identifier("hbm_doors", "textures/block/doors/" + id + ".png");
+    }
 
     public static @Nullable DoorType fromId(String id) {
         for (DoorType type : values()) {
