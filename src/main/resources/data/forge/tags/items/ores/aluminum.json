@@ -1,7 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "hbm_m:aluminum_ore",
-    "hbm_m:aluminum_ore_deepslate"
-  ]
-}

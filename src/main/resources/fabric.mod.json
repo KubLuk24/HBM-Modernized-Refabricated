@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "hbm_doors",
+  "version": "${version}",
+  "name": "HBM Doors",
+  "description": "Fabric 1.20.1 port of the elaborate door system from HBM-Modernized. 13 custom animated doors.",
+  "authors": [
+    "KubLuk24",
+    "Raptor324 (HBM-Modernized)",
+    "The Bobcat (HBM's NTM original)"
+  ],
+  "contact": {
+    "sources": "https://github.com/KubLuk24/HBM-Modernized-Refabricated"
+  },
+  "license": "GPL-3.0",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.hbm.doors.HbmDoorsMod"],
+    "client": ["com.hbm.doors.HbmDoorsClient"]
+  },
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "fabric-api": "*",
+    "minecraft": "1.20.1",
+    "java": ">=17"
+  }
+}

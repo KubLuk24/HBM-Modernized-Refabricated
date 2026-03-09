@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "hbm_doors:block/sliding_blast_door"
+    },
+    "facing=south": {
+      "model": "hbm_doors:block/sliding_blast_door",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "hbm_doors:block/sliding_blast_door",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "hbm_doors:block/sliding_blast_door",
+      "y": 90
+    }
+  }
+}

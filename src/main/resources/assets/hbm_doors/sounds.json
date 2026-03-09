@@ -1,0 +1,22 @@
+{
+  "block.door.garage_move": { "sounds": [{"name": "hbm_doors:block/door/garage_move", "stream": true}] },
+  "block.door.garage_stop": { "sounds": [{"name": "hbm_doors:block/door/garage_stop"}] },
+  "block.door.door_wgh_big_start": { "sounds": [{"name": "hbm_doors:block/door/door_wgh_big_start", "stream": true}] },
+  "block.door.door_wgh_big_stop": { "sounds": [{"name": "hbm_doors:block/door/door_wgh_big_stop"}] },
+  "block.door.door_move_2": { "sounds": [{"name": "hbm_doors:block/door/door_move_2"}] },
+  "block.door.door_shut_1": { "sounds": [{"name": "hbm_doors:block/door/door_shut_1"}] },
+  "block.door.door_slide_opened_1": { "sounds": [{"name": "hbm_doors:block/door/door_slide_opened_1"}] },
+  "block.door.door_slide_opening_1": { "sounds": [{"name": "hbm_doors:block/door/door_slide_opening_1"}] },
+  "block.door.lever_1": { "sounds": [{"name": "hbm_doors:block/door/lever_1"}] },
+  "block.door.metal_stop_1": { "sounds": [{"name": "hbm_doors:block/door/metal_stop_1"}] },
+  "block.door.sliding_door_opened": { "sounds": [{"name": "hbm_doors:block/door/sliding_door_opened"}] },
+  "block.door.sliding_door_opening": { "sounds": [{"name": "hbm_doors:block/door/sliding_door_opening", "stream": true}] },
+  "block.door.sliding_door_shut": { "sounds": [{"name": "hbm_doors:block/door/sliding_door_shut"}] },
+  "block.door.transition_seal_open": { "sounds": [{"name": "hbm_doors:block/door/transition_seal_open"}] },
+  "block.door.transition_seal_close": { "sounds": [{"name": "hbm_doors:block/door/transition_seal_close"}] },
+  "block.door.wgh_start": { "sounds": [{"name": "hbm_doors:block/door/wgh_start", "stream": true}] },
+  "block.door.wgh_stop": { "sounds": [{"name": "hbm_doors:block/door/wgh_stop"}] },
+  "block.door.vault_scrape": { "sounds": [{"name": "hbm_doors:block/door/vault_scrape"}] },
+  "block.door.vault_thud": { "sounds": [{"name": "hbm_doors:block/door/vault_thud"}] },
+  "block.door.alarm_6": { "sounds": [{"name": "hbm_doors:block/door/alarm_6"}] }
+}
