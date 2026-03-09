@@ -12,18 +12,11 @@ import java.util.function.Supplier;
 // Утилитарный класс для управления мультиблочными структурами.
 // Позволяет определять структуру, проверять возможность постройки, строить и разрушать структуру,
 // а также генерировать VoxelShape для всей структуры. Ядро всей мультиблочной логики.
-import com.hbm_m.api.energy.WireBlock;
-import com.hbm_m.block.machines.MachineAdvancedAssemblerBlock;
-import com.hbm_m.block.machines.UniversalMachinePartBlock;
-import com.hbm_m.config.ModClothConfig;
 import com.hbm_m.main.MainRegistry;
-import com.hbm_m.network.HighlightBlocksPacket;
-import com.hbm_m.network.ModPacketHandler;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -36,7 +29,6 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.network.PacketDistributor;
 
 public class MultiblockStructureHelper {
     
@@ -513,12 +505,6 @@ public class MultiblockStructureHelper {
         }
 
         if (!obstructions.isEmpty()) {
-            if (player instanceof ServerPlayer serverPlayer) {
-                // Проверяем, включена ли опция в конфиге, перед отправкой пакета
-                if (ModClothConfig.get().obstructionHighlight.enableObstructionHighlight) {
-                    ModPacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> serverPlayer), new HighlightBlocksPacket(obstructions));
-                }
-            }
             player.displayClientMessage(Component.translatable("chat.hbm_m.structure.obstructed"), true);
             return false;
         }
@@ -540,7 +526,6 @@ public class MultiblockStructureHelper {
     public synchronized void placeStructure(Level level, BlockPos controllerPos, Direction facing, IMultiblockController controller) {
         if (level.isClientSide) return;
 
-        List<BlockPos> energyConnectorPositions = new ArrayList<>();
         List<BlockPos> allPlacedPositions = new ArrayList<>();
         
         for (Map.Entry<BlockPos, Supplier<BlockState>> entry : structureMap.entrySet()) {
@@ -595,11 +580,6 @@ public class MultiblockStructureHelper {
                     partBe.setAllowedClimbSides(worldSides);
                 }
                 
-                // ENERGY_CONNECTOR и UNIVERSAL_CONNECTOR могут принимать энергию
-                if (role == PartRole.ENERGY_CONNECTOR || role == PartRole.UNIVERSAL_CONNECTOR) {
-                    energyConnectorPositions.add(worldPos);
-                }
-                
                 // === ЗАГЛУШКА ДЛЯ CONVEYOR СИСТЕМЫ ===
                 // UNIVERSAL_CONNECTOR является точкой подключения conveyor системы,
                 // но сам по себе НЕ передаёт и не принимает items/fluids.
@@ -619,17 +599,6 @@ public class MultiblockStructureHelper {
             controller, controllerPos, allPlacedPositions.size(), formatPositions(allPlacedPositions));
         
         updateFrameForController(level, controllerPos);
-        
-        // ОДНО массовое обновление в конце вместо 156
-        for (BlockPos connectorPos : energyConnectorPositions) {
-            for (Direction dir : Direction.values()) {
-                BlockPos wirePos = connectorPos.relative(dir);
-                BlockState wireState = level.getBlockState(wirePos);
-                if (wireState.getBlock() instanceof WireBlock) {
-                    level.updateNeighborsAt(wirePos, wireState.getBlock());
-                }
-            }
-        }
     }
     
     // Вспомогательный метод для красивого форматирования координат
@@ -652,9 +621,10 @@ public class MultiblockStructureHelper {
         if (level.isClientSide || IS_DESTROYING.get()) return;
         IS_DESTROYING.set(true);
         try {
+            Block phantomBlock = phantomBlockState.get().getBlock();
             for (BlockPos gridPos : structureMap.keySet()) {
                 BlockPos worldPos = getRotatedPos(controllerPos, gridPos, facing);
-                if (level.getBlockState(worldPos).getBlock() instanceof UniversalMachinePartBlock) {
+                if (level.getBlockState(worldPos).getBlock() == phantomBlock) {
                     level.setBlock(worldPos, Blocks.AIR.defaultBlockState(), 3);
                 }
             }
@@ -758,17 +728,7 @@ public class MultiblockStructureHelper {
         // Вычисляем видимость рамки
         boolean visible = helper.computeFrameVisible(level, controllerPos, facing);
 
-        // MachineAdvancedAssemblerBlock: храним FRAME в BlockState для запекания в чанк (Embeddium/Sodium)
-        if (block instanceof MachineAdvancedAssemblerBlock) {
-            BlockState currentState = level.getBlockState(controllerPos);
-            if (currentState.hasProperty(MachineAdvancedAssemblerBlock.FRAME)
-                    && currentState.getValue(MachineAdvancedAssemblerBlock.FRAME) != visible) {
-                level.setBlock(controllerPos, currentState.setValue(MachineAdvancedAssemblerBlock.FRAME, visible), 3);
-            }
-            return;
-        }
-
-        // Остальные контроллеры (двери и т.д.): применяем через интерфейс BlockEntity
+        // Применяем через интерфейс BlockEntity
         if (be instanceof IFrameSupportable fs) {
             fs.setFrameVisible(visible);
         }
