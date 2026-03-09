@@ -2,6 +2,7 @@ package com.hbm_m.block.entity;
 
 import com.hbm_m.block.ModBlocks;
 import com.hbm_m.block.entity.doors.DoorBlockEntity;
+import com.hbm_m.block.entity.machines.UniversalMachinePartBlockEntity;
 import com.hbm_m.lib.RefStrings;
 
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -31,6 +32,12 @@ public class ModBlockEntities {
                         ModBlocks.SILO_HATCH.get(),
                         ModBlocks.SILO_HATCH_LARGE.get(),
                         ModBlocks.VAULT_DOOR.get())
+                    .build(null));
+
+    public static final RegistryObject<BlockEntityType<UniversalMachinePartBlockEntity>> UNIVERSAL_MACHINE_PART_BE =
+        BLOCK_ENTITIES.register("universal_machine_part", () -> 
+                BlockEntityType.Builder.of(UniversalMachinePartBlockEntity::new,
+                        ModBlocks.UNIVERSAL_MACHINE_PART.get())
                     .build(null));
 
     public static void register(IEventBus eventBus) {

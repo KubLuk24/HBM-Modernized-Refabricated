@@ -3,6 +3,7 @@ package com.hbm_m.block;
 import java.util.function.Supplier;
 
 import com.hbm_m.block.decorations.DoorBlock;
+import com.hbm_m.block.machines.UniversalMachinePartBlock;
 import com.hbm_m.item.ModItems;
 import com.hbm_m.lib.RefStrings;
 
@@ -20,6 +21,17 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, RefStrings.MODID);
+
+    //---------------------------<PHANTOM BLOCK>-------------------------------
+
+    public static final RegistryObject<Block> UNIVERSAL_MACHINE_PART = registerBlockWithoutItem("universal_machine_part",
+            () -> new UniversalMachinePartBlock(
+                    BlockBehaviour.Properties.of()
+                            .strength(-1.0F, 3600000.0F)
+                            .noLootTable()
+                            .noOcclusion()
+                            .isViewBlocking((state, level, pos) -> false)
+            ));
 
     //---------------------------<ДВЕРИ>-------------------------------------
 

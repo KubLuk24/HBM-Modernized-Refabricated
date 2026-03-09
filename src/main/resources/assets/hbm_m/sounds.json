@@ -78,5 +78,13 @@
   "block.vault_thud": {
     "subtitle": "sounds.hbm_m.subtitle.vault_thud",
     "sounds": [ "hbm_m:block/door/vault_thud" ]
+  },
+  "block.metal_box_open": {
+    "subtitle": "sounds.hbm_m.subtitle.metal_box_open",
+    "sounds": [ "hbm_m:block/door/metal_box_open" ]
+  },
+  "block.metal_box_close": {
+    "subtitle": "sounds.hbm_m.subtitle.metal_box_close",
+    "sounds": [ "hbm_m:block/door/metal_box_close" ]
   }
 }

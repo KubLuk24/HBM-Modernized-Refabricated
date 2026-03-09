@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "hbm_m:block/universal_machine_part"
+    },
+    "facing=south": {
+      "model": "hbm_m:block/universal_machine_part"
+    },
+    "facing=west": {
+      "model": "hbm_m:block/universal_machine_part"
+    },
+    "facing=east": {
+      "model": "hbm_m:block/universal_machine_part"
+    }
+  }
+}
