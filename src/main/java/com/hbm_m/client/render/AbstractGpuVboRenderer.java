@@ -305,7 +305,7 @@ public abstract class AbstractGpuVboRenderer {
             return;
         }
     
-        ShaderInstance shader = GameRenderer.getPositionTexColorNormalShader();
+        ShaderInstance shader = ModShaders.getBlockLitShader();
         if (shader == null) {
             return;
         }

@@ -1,23 +1,31 @@
 package com.hbm_m.client;
 
+import java.io.IOException;
+
+import com.google.common.collect.ImmutableMap;
 import com.hbm_m.block.entity.ModBlockEntities;
 import com.hbm_m.block.entity.doors.DoorDeclRegistry;
 import com.hbm_m.client.loader.DoorModelLoader;
 import com.hbm_m.client.render.DoorRenderer;
 import com.hbm_m.client.render.GlobalMeshCache;
+import com.hbm_m.client.render.ModShaders;
 import com.hbm_m.lib.RefStrings;
 import com.hbm_m.main.MainRegistry;
 
+import com.mojang.blaze3d.vertex.DefaultVertexFormat;
+import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.blaze3d.vertex.VertexFormatElement;
+import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
+import net.minecraftforge.client.event.RegisterShadersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 
 @Mod.EventBusSubscriber(modid = RefStrings.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientSetup {
@@ -116,5 +124,34 @@ public class ClientSetup {
             DoorRenderer.clearAllCaches();
             GlobalMeshCache.clearAll();
         });
+    }
+
+    @SubscribeEvent
+    public static void onRegisterShaders(RegisterShadersEvent event) throws IOException {
+        MainRegistry.LOGGER.info("Registering optimized shaders...");
+
+        VertexFormat blockLitFormat = new VertexFormat(
+            ImmutableMap.<String, VertexFormatElement>builder()
+                .put("Position", DefaultVertexFormat.ELEMENT_POSITION) // Loc 0
+                .put("Normal",   DefaultVertexFormat.ELEMENT_NORMAL)   // Loc 1
+                .put("UV0",      DefaultVertexFormat.ELEMENT_UV0)      // Loc 2
+
+                // Instancing attributes:
+                .put("InstPos", new VertexFormatElement(0, VertexFormatElement.Type.FLOAT, VertexFormatElement.Usage.GENERIC, 3)) // Loc 3
+                .put("InstRot", new VertexFormatElement(0, VertexFormatElement.Type.FLOAT, VertexFormatElement.Usage.GENERIC, 4)) // Loc 4
+                .put("InstBrightness", new VertexFormatElement(0, VertexFormatElement.Type.FLOAT, VertexFormatElement.Usage.GENERIC, 1)) // Loc 5
+
+                .build()
+        );
+
+        event.registerShader(
+            new ShaderInstance(
+                event.getResourceProvider(),
+                ResourceLocation.fromNamespaceAndPath(MainRegistry.MOD_ID, "block_lit"),
+                blockLitFormat
+            ),
+            ModShaders::setBlockLitShader
+        );
+        MainRegistry.LOGGER.info("Successfully registered block_lit shader");
     }
 }
