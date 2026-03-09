@@ -12,5 +12,8 @@
   "block.hbm_doors.water_door": "Water Door",
   "block.hbm_doors.silo_hatch": "Silo Hatch",
   "block.hbm_doors.silo_hatch_large": "Large Silo Hatch",
-  "block.hbm_doors.vault_door": "Vault Door"
+  "block.hbm_doors.vault_door": "Vault Door",
+  "block.hbm_doors.metal_door": "Metal Door",
+  "block.hbm_doors.door_bunker": "Bunker Door",
+  "block.hbm_doors.door_office": "Office Door"
 }

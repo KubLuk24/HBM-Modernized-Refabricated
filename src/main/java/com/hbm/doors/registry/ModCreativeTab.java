@@ -32,6 +32,9 @@ public class ModCreativeTab {
                     entries.add(ModBlocks.SILO_HATCH);
                     entries.add(ModBlocks.SILO_HATCH_LARGE);
                     entries.add(ModBlocks.VAULT_DOOR);
+                    entries.add(ModBlocks.METAL_DOOR);
+                    entries.add(ModBlocks.DOOR_BUNKER);
+                    entries.add(ModBlocks.DOOR_OFFICE);
                 })
                 .build()
         );

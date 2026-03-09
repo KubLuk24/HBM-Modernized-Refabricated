@@ -2,6 +2,7 @@ package com.hbm.doors.registry;
 
 import com.hbm.doors.HbmDoorsMod;
 import com.hbm.doors.block.CustomDoorBlock;
+import com.hbm.doors.block.SimpleDoorBlock;
 import com.hbm.doors.door.DoorType;
 import net.minecraft.block.*;
 import net.minecraft.registry.Registries;
@@ -22,6 +23,21 @@ public class ModBlocks {
     public static CustomDoorBlock SILO_HATCH;
     public static CustomDoorBlock SILO_HATCH_LARGE;
     public static CustomDoorBlock VAULT_DOOR;
+
+    // Simple vanilla-style doors
+    public static SimpleDoorBlock METAL_DOOR;
+    public static SimpleDoorBlock DOOR_BUNKER;
+    public static SimpleDoorBlock DOOR_OFFICE;
+
+    private static SimpleDoorBlock regSimple(String name) {
+        SimpleDoorBlock block = new SimpleDoorBlock(AbstractBlock.Settings.create()
+            .strength(3.0f, 6.0f)
+            .sounds(BlockSoundGroup.METAL)
+            .requiresTool(),
+            BlockSetType.IRON);
+        Registry.register(Registries.BLOCK, new Identifier(HbmDoorsMod.MOD_ID, name), block);
+        return block;
+    }
 
     private static CustomDoorBlock regCustom(String name, DoorType type) {
         CustomDoorBlock block = new CustomDoorBlock(type, AbstractBlock.Settings.create()
@@ -47,5 +63,9 @@ public class ModBlocks {
         SILO_HATCH = regCustom("silo_hatch", DoorType.SILO_HATCH);
         SILO_HATCH_LARGE = regCustom("silo_hatch_large", DoorType.SILO_HATCH_LARGE);
         VAULT_DOOR = regCustom("vault_door", DoorType.VAULT_DOOR);
+
+        METAL_DOOR = regSimple("metal_door");
+        DOOR_BUNKER = regSimple("door_bunker");
+        DOOR_OFFICE = regSimple("door_office");
     }
 }

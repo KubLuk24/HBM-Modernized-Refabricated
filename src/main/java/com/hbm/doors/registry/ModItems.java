@@ -29,5 +29,8 @@ public class ModItems {
         regItem("silo_hatch", ModBlocks.SILO_HATCH);
         regItem("silo_hatch_large", ModBlocks.SILO_HATCH_LARGE);
         regItem("vault_door", ModBlocks.VAULT_DOOR);
+        regItem("metal_door", ModBlocks.METAL_DOOR);
+        regItem("door_bunker", ModBlocks.DOOR_BUNKER);
+        regItem("door_office", ModBlocks.DOOR_OFFICE);
     }
 }
