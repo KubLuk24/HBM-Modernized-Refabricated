@@ -61,13 +61,24 @@ public class ObjLoader {
                         tokens.length > 2 ? Float.parseFloat(tokens[2]) : 0f
                     });
                     case "usemtl" -> currentMat = tokens.length > 1 ? tokens[1] : "";
-                    case "o", "g" -> {
+                    case "o" -> {
                         if (!currentFaces.isEmpty()) {
                             ObjPart part = buildPart(currentGroup, allVerts, allNormals, allTexCoords, currentFaces, currentMat);
                             parts.put(currentGroup, part);
                         }
                         currentGroup = tokens.length > 1 ? tokens[1] : "default";
                         currentFaces = new ArrayList<>();
+                    }
+                    case "g" -> {
+                        // Only start a new part when there are faces already accumulated.
+                        // If no faces yet (i.e. 'g' immediately follows an 'o'), this is a
+                        // sub-group declaration — keep the current object name.
+                        if (!currentFaces.isEmpty()) {
+                            ObjPart part = buildPart(currentGroup, allVerts, allNormals, allTexCoords, currentFaces, currentMat);
+                            parts.put(currentGroup, part);
+                            currentGroup = tokens.length > 1 ? tokens[1] : "default";
+                            currentFaces = new ArrayList<>();
+                        }
                     }
                     case "f" -> {
                         int[][] faceVerts = new int[tokens.length - 1][];

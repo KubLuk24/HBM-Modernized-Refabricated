@@ -6,8 +6,8 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 public enum DoorType {
-    LARGE_VEHICLE_DOOR("large_vehicle_door", 60, new String[]{"frame", "door"}),
-    ROUND_AIRLOCK_DOOR("round_airlock_door", 60, new String[]{"frame", "door"}),
+    LARGE_VEHICLE_DOOR("large_vehicle_door", 60, new String[]{"frame", "doorRight", "doorLeft"}),
+    ROUND_AIRLOCK_DOOR("round_airlock_door", 60, new String[]{"frame", "doorLeft", "doorRight"}),
     TRANSITION_SEAL("transition_seal", 480, new String[]{
         "frame", "door", "Cylinder.001", "Cylinder.003", "Cylinder.005", "Cube.006",
         "Cylinder.007", "Cylinder.008", "Circle", "Cylinder.009", "Cylinder.010",
@@ -15,15 +15,15 @@ public enum DoorType {
         "door.003", "door.004", "ring.002", "door.006"
     }),
     FIRE_DOOR("fire_door", 160, new String[]{"frame", "door"}),
-    SLIDING_BLAST_DOOR("sliding_blast_door", 24, new String[]{"DoorFrame", "DoorLeft", "DoorRight", "Window", "DoorCircleLeft", "DoorCircleRight"}),
+    SLIDING_BLAST_DOOR("sliding_blast_door", 24, new String[]{"Frame", "LeftDoor", "RightDoor", "LeftLock", "RightLock"}),
     SLIDING_SEAL_DOOR("sliding_seal_door", 20, new String[]{"frame", "door"}),
-    SECURE_ACCESS_DOOR("secure_access_door", 120, new String[]{"frame", "door"}),
-    QE_SLIDING_DOOR("qe_sliding_door", 10, new String[]{"frame", "door"}),
+    SECURE_ACCESS_DOOR("secure_access_door", 120, new String[]{"base", "door"}),
+    QE_SLIDING_DOOR("qe_sliding_door", 10, new String[]{"frame", "leftDoor", "rightDoor"}),
     QE_CONTAINMENT_DOOR("qe_containment_door", 20, new String[]{"frame", "door"}),
     WATER_DOOR("water_door", 20, new String[]{"frame", "door", "spinny_upper", "spinny_lower"}),
-    SILO_HATCH("silo_hatch", 60, new String[]{"frame", "door"}),
-    SILO_HATCH_LARGE("silo_hatch_large", 60, new String[]{"frame", "door"}),
-    VAULT_DOOR("vault_door", 40, new String[]{"frame", "door", "Label"});
+    SILO_HATCH("silo_hatch", 60, new String[]{"Frame", "Hatch"}),
+    SILO_HATCH_LARGE("silo_hatch_large", 60, new String[]{"Frame", "Hatch"}),
+    VAULT_DOOR("vault_door", 40, new String[]{"Frame", "Door", "Label"});
 
     private final String id;
     private final int openTime;
@@ -58,12 +58,14 @@ public enum DoorType {
         float t = normTime(openTicks, openTime);
         switch (this) {
             case LARGE_VEHICLE_DOOR -> {
-                if ("door".equals(partName)) { trans[0]=0; trans[1] = 3.0f*t; trans[2]=0; }
-                else { trans[0]=0; trans[1]=0; trans[2]=0; }
+                if ("doorRight".equals(partName) || "doorLeft".equals(partName)) {
+                    trans[0]=0; trans[1] = 3.0f*t; trans[2]=0;
+                } else { trans[0]=0; trans[1]=0; trans[2]=0; }
             }
             case ROUND_AIRLOCK_DOOR -> {
-                if ("door".equals(partName)) { trans[0]=0; trans[1] = 1.5f*t; trans[2]=0; }
-                else { trans[0]=0; trans[1]=0; trans[2]=0; }
+                if ("doorLeft".equals(partName) || "doorRight".equals(partName)) {
+                    trans[0]=0; trans[1] = 1.5f*t; trans[2]=0;
+                } else { trans[0]=0; trans[1]=0; trans[2]=0; }
             }
             case TRANSITION_SEAL -> {
                 if ("frame".equals(partName)) { trans[0]=0; trans[1]=0; trans[2]=0; }
@@ -74,9 +76,8 @@ public enum DoorType {
                 else { trans[0]=0; trans[1] = 3.0f*t; trans[2]=0; }
             }
             case SLIDING_BLAST_DOOR -> {
-                if ("DoorFrame".equals(partName)) { trans[0]=0; trans[1]=0; trans[2]=0; }
-                else if ("DoorLeft".equals(partName)) { trans[0] = 2.125f*t; trans[1]=0; trans[2]=0; }
-                else if ("DoorRight".equals(partName)) { trans[0] = -2.125f*t; trans[1]=0; trans[2]=0; }
+                if ("LeftDoor".equals(partName)) { trans[0]=0; trans[1]=0; trans[2] = 3.5f*t; }
+                else if ("RightDoor".equals(partName)) { trans[0]=0; trans[1]=0; trans[2] = -3.5f*t; }
                 else { trans[0]=0; trans[1]=0; trans[2]=0; }
             }
             case SLIDING_SEAL_DOOR -> {
@@ -88,7 +89,9 @@ public enum DoorType {
                 else { trans[0]=0; trans[1]=0; trans[2]=0; }
             }
             case QE_SLIDING_DOOR -> {
-                if ("door".equals(partName)) { trans[0]=0; trans[1]=0; trans[2] = 0.99f*t; }
+                if ("frame".equals(partName)) { trans[0]=0; trans[1]=0; trans[2]=0; }
+                else if ("leftDoor".equals(partName)) { trans[0]=0; trans[1]=0; trans[2] = 0.99f*t; }
+                else if ("rightDoor".equals(partName)) { trans[0]=0; trans[1]=0; trans[2] = -0.99f*t; }
                 else { trans[0]=0; trans[1]=0; trans[2]=0; }
             }
             case QE_CONTAINMENT_DOOR -> {
@@ -99,15 +102,15 @@ public enum DoorType {
                 trans[0]=0; trans[1]=0; trans[2]=0;
             }
             case SILO_HATCH -> {
-                if ("door".equals(partName)) { trans[0] = 2.5f*t; trans[1]=0; trans[2]=0; }
+                if ("Hatch".equals(partName)) { trans[0] = 2.5f*t; trans[1]=0; trans[2]=0; }
                 else { trans[0]=0; trans[1]=0; trans[2]=0; }
             }
             case SILO_HATCH_LARGE -> {
-                if ("door".equals(partName)) { trans[0] = 3.5f*t; trans[1]=0; trans[2]=0; }
+                if ("Hatch".equals(partName)) { trans[0] = 3.5f*t; trans[1]=0; trans[2]=0; }
                 else { trans[0]=0; trans[1]=0; trans[2]=0; }
             }
             case VAULT_DOOR -> {
-                if ("door".equals(partName) || "Label".equals(partName)) {
+                if ("Door".equals(partName) || "Label".equals(partName)) {
                     float angle = (float)Math.toRadians(90f * t);
                     float radius = 0.5f;
                     trans[0] = radius * (float)Math.sin(angle);
@@ -131,12 +134,12 @@ public enum DoorType {
                 }
             }
             case SILO_HATCH, SILO_HATCH_LARGE -> {
-                if ("door".equals(partName)) {
+                if ("Hatch".equals(partName)) {
                     rot[0]=0; rot[1]=0; rot[2]=1; rot[3] = -90f * t;
                 }
             }
             case VAULT_DOOR -> {
-                if ("door".equals(partName) || "Label".equals(partName)) {
+                if ("Door".equals(partName) || "Label".equals(partName)) {
                     rot[0]=0; rot[1]=1; rot[2]=0; rot[3] = 90f * t;
                 }
             }
@@ -153,12 +156,12 @@ public enum DoorType {
                 }
             }
             case SILO_HATCH, SILO_HATCH_LARGE -> {
-                if ("door".equals(partName)) {
+                if ("Hatch".equals(partName)) {
                     orig[0]=-2.0f; orig[1]=0; orig[2]=0;
                 }
             }
             case VAULT_DOOR -> {
-                if ("door".equals(partName) || "Label".equals(partName)) {
+                if ("Door".equals(partName) || "Label".equals(partName)) {
                     orig[0]=0; orig[1]=0; orig[2]=0.5f;
                 }
             }
