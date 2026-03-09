@@ -36,6 +36,9 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> VAULT_SCRAPE = registerSoundEvents("block.vault_scrape");
     public static final RegistryObject<SoundEvent> VAULT_THUD = registerSoundEvents("block.vault_thud");
 
+    public static final RegistryObject<SoundEvent> METAL_BOX_OPEN = registerSoundEvents("block.metal_box_open");
+    public static final RegistryObject<SoundEvent> METAL_BOX_CLOSE = registerSoundEvents("block.metal_box_close");
+
     private static RegistryObject<SoundEvent> registerSoundEvents(String name) {
         ResourceLocation id = ResourceLocation.fromNamespaceAndPath(RefStrings.MODID, name);
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(id));

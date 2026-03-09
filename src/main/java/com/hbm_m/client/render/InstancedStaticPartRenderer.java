@@ -196,7 +196,7 @@ public class InstancedStaticPartRenderer extends AbstractGpuVboRenderer {
 
         // --- VANILLA VBO PATH  ---
 
-        ShaderInstance shader = ModShaders.getBlockLitShader();
+        ShaderInstance shader = GameRenderer.getPositionTexColorNormalShader();
         if (shader == null) return;
 
         int previousVao = GL11.glGetInteger(GL30.GL_VERTEX_ARRAY_BINDING);
@@ -349,7 +349,7 @@ public class InstancedStaticPartRenderer extends AbstractGpuVboRenderer {
     
     
     private void flushBatch(Matrix4f projectionMatrix) {
-        ShaderInstance shader = ModShaders.getBlockLitShader();
+        ShaderInstance shader = GameRenderer.getPositionTexColorNormalShader();
         if (shader == null) return;
 
         updateUniformCache(shader);

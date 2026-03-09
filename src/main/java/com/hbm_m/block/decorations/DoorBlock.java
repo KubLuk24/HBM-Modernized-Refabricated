@@ -6,12 +6,10 @@ import java.util.function.Supplier;
 
 import org.jetbrains.annotations.Nullable;
 
-import com.hbm_m.block.ModBlocks;
 import com.hbm_m.block.entity.ModBlockEntities;
 import com.hbm_m.block.entity.doors.DoorBlockEntity;
 import com.hbm_m.block.entity.doors.DoorDecl;
 import com.hbm_m.block.entity.doors.DoorDeclRegistry;
-import com.hbm_m.item.ModItems;
 import com.hbm_m.multiblock.IMultiblockController;
 import com.hbm_m.multiblock.MultiblockStructureHelper;
 import com.hbm_m.multiblock.PartRole;
@@ -61,7 +59,7 @@ public class DoorBlock extends BaseEntityBlock implements IMultiblockController 
         
         DoorDecl decl = DoorDeclRegistry.getById(doorDeclId);
         
-        Supplier<BlockState> phantomSupplier = () -> ModBlocks.UNIVERSAL_MACHINE_PART.get().defaultBlockState();
+        Supplier<BlockState> phantomSupplier = () -> net.minecraft.world.level.block.Blocks.BARRIER.defaultBlockState();
         
         if (decl != null && decl.getStructureDefinition() != null) {
             DoorDecl.DoorStructureDefinition def = decl.getStructureDefinition();
@@ -102,7 +100,7 @@ public class DoorBlock extends BaseEntityBlock implements IMultiblockController 
 
     private static Map<BlockPos, Supplier<BlockState>> createStructureForDoor(String doorDeclId) {
         Map<BlockPos, Supplier<BlockState>> structureMap = new HashMap<>();
-        Supplier<BlockState> phantomSupplier = () -> ModBlocks.UNIVERSAL_MACHINE_PART.get().defaultBlockState();
+        Supplier<BlockState> phantomSupplier = () -> net.minecraft.world.level.block.Blocks.BARRIER.defaultBlockState();
 
         // Получаем размеры двери на основе типа
         int[] dimensions = getDoorDimensions(doorDeclId);
@@ -227,8 +225,7 @@ public class DoorBlock extends BaseEntityBlock implements IMultiblockController 
     }
 
     private static boolean hasScrewdriver(Player player) {
-        return player.getItemInHand(InteractionHand.MAIN_HAND).getItem() == ModItems.SCREWDRIVER.get()
-                || player.getItemInHand(InteractionHand.OFF_HAND).getItem() == ModItems.SCREWDRIVER.get();
+        return false;
     }
 
     @Override
