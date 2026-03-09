@@ -1,10 +1,8 @@
 package com.hbm_m.block.entity.machines;
 
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import com.hbm_m.block.entity.ModBlockEntities;
-import com.hbm_m.capability.ModCapabilities;
 import com.hbm_m.multiblock.IMultiblockPart;
 import com.hbm_m.multiblock.PartRole;
 
@@ -19,9 +17,6 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
 
 public class UniversalMachinePartBlockEntity extends BlockEntity implements IMultiblockPart {
 
@@ -42,16 +37,10 @@ public class UniversalMachinePartBlockEntity extends BlockEntity implements IMul
     @Override
     public void setPartRole(PartRole role) {
         if (this.role != role) {
-            boolean wasEnergy = this.role.canReceiveEnergy() || this.role.canSendEnergy();
-            boolean isEnergy = role.canReceiveEnergy() || role.canSendEnergy();
             this.role = role;
             this.setChanged();
             if (level != null && !level.isClientSide()) {
                 level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
-                // Уведомляем соседей (провода и др.), чтобы обновили визуальное соединение
-                if (wasEnergy || isEnergy) {
-                    level.updateNeighborsAt(worldPosition, getBlockState().getBlock());
-                }
             }
         }
     }
@@ -78,58 +67,6 @@ public class UniversalMachinePartBlockEntity extends BlockEntity implements IMul
     @Override
     public java.util.Set<Direction> getAllowedClimbSides() {
         return this.allowedClimbSides;
-    }
-
-    @NotNull
-    @Override
-    public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        var level = this.level;
-        if (this.controllerPos == null || level == null) {
-            return super.getCapability(cap, side);
-        }
-
-        BlockEntity controllerBE = level.getBlockEntity(this.controllerPos);
-        if (controllerBE == null) {
-            return super.getCapability(cap, side);
-        }
-
-        // === ДЕЛЕГИРОВАНИЕ ЭНЕРГИИ ===
-        // ENERGY_CONNECTOR и UNIVERSAL_CONNECTOR оба принимают/отдают энергию (PartRole.canReceiveEnergy/canSendEnergy)
-        if (this.role.canReceiveEnergy() || this.role.canSendEnergy()) {
-
-            // HBM API (Provider, Receiver, Connector)
-            if (cap == ModCapabilities.HBM_ENERGY_PROVIDER ||
-                    cap == ModCapabilities.HBM_ENERGY_RECEIVER ||
-                    cap == ModCapabilities.HBM_ENERGY_CONNECTOR)
-            {
-                return controllerBE.getCapability(cap, side);
-            }
-
-            // Forge Energy API (как и было)
-            if (cap == ForgeCapabilities.ENERGY) {
-                return controllerBE.getCapability(cap, side);
-            }
-        }
-
-        // === ДЕЛЕГИРОВАНИЕ ПРЕДМЕТОВ ===
-        if (cap == ForgeCapabilities.ITEM_HANDLER &&
-                (this.role == PartRole.ITEM_INPUT || this.role == PartRole.ITEM_OUTPUT))
-        {
-            // MachineAssemblerBlockEntity вернет специальный proxy-handler
-            if (controllerBE instanceof MachineAssemblerBlockEntity assembler) {
-                return assembler.getItemHandlerForPart(this.role).cast();
-            }
-
-            // Для других машин (если появятся) можно делегировать напрямую
-            return controllerBE.getCapability(cap, side);
-        }
-
-        // === ДЕЛЕГИРОВАНИЕ ЖИДКОСТЕЙ ===
-        if (cap == ForgeCapabilities.FLUID_HANDLER && this.role == PartRole.FLUID_CONNECTOR) {
-            return controllerBE.getCapability(cap, side);
-        }
-
-        return super.getCapability(cap, side);
     }
 
     @Override
@@ -186,7 +123,6 @@ public class UniversalMachinePartBlockEntity extends BlockEntity implements IMul
         if (tag != null) {
             handleUpdateTag(tag);
             
-            // Принудительно обновляем состояние блока на клиенте, чтобы обновилась визуализация/логика
             if (level != null && level.isClientSide) {
                 level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_ALL);
             }

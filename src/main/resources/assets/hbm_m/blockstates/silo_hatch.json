@@ -1,0 +1,388 @@
+{
+  "variants": {
+    "facing=north,open=true,door_moving=true,part_role=default": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=false,door_moving=true,part_role=default": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=true,door_moving=false,part_role=default": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=false,door_moving=false,part_role=default": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=true,door_moving=true,part_role=energy_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=false,door_moving=true,part_role=energy_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=true,door_moving=false,part_role=energy_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=false,door_moving=false,part_role=energy_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=true,door_moving=true,part_role=fluid_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=false,door_moving=true,part_role=fluid_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=true,door_moving=false,part_role=fluid_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=false,door_moving=false,part_role=fluid_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=true,door_moving=true,part_role=item_input": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=false,door_moving=true,part_role=item_input": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=true,door_moving=false,part_role=item_input": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=false,door_moving=false,part_role=item_input": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=true,door_moving=true,part_role=item_output": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=false,door_moving=true,part_role=item_output": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=true,door_moving=false,part_role=item_output": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=false,door_moving=false,part_role=item_output": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=true,door_moving=true,part_role=universal_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=false,door_moving=true,part_role=universal_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=true,door_moving=false,part_role=universal_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=false,door_moving=false,part_role=universal_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=true,door_moving=true,part_role=ladder": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=false,door_moving=true,part_role=ladder": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=true,door_moving=false,part_role=ladder": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=false,door_moving=false,part_role=ladder": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=true,door_moving=true,part_role=controller": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=false,door_moving=true,part_role=controller": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=true,door_moving=false,part_role=controller": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=north,open=false,door_moving=false,part_role=controller": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=true,door_moving=true,part_role=default": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=false,door_moving=true,part_role=default": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=true,door_moving=false,part_role=default": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=false,door_moving=false,part_role=default": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=true,door_moving=true,part_role=energy_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=false,door_moving=true,part_role=energy_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=true,door_moving=false,part_role=energy_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=false,door_moving=false,part_role=energy_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=true,door_moving=true,part_role=fluid_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=false,door_moving=true,part_role=fluid_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=true,door_moving=false,part_role=fluid_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=false,door_moving=false,part_role=fluid_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=true,door_moving=true,part_role=item_input": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=false,door_moving=true,part_role=item_input": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=true,door_moving=false,part_role=item_input": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=false,door_moving=false,part_role=item_input": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=true,door_moving=true,part_role=item_output": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=false,door_moving=true,part_role=item_output": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=true,door_moving=false,part_role=item_output": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=false,door_moving=false,part_role=item_output": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=true,door_moving=true,part_role=universal_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=false,door_moving=true,part_role=universal_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=true,door_moving=false,part_role=universal_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=false,door_moving=false,part_role=universal_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=true,door_moving=true,part_role=ladder": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=false,door_moving=true,part_role=ladder": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=true,door_moving=false,part_role=ladder": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=false,door_moving=false,part_role=ladder": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=true,door_moving=true,part_role=controller": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=false,door_moving=true,part_role=controller": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=true,door_moving=false,part_role=controller": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=south,open=false,door_moving=false,part_role=controller": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=true,door_moving=true,part_role=default": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=false,door_moving=true,part_role=default": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=true,door_moving=false,part_role=default": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=false,door_moving=false,part_role=default": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=true,door_moving=true,part_role=energy_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=false,door_moving=true,part_role=energy_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=true,door_moving=false,part_role=energy_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=false,door_moving=false,part_role=energy_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=true,door_moving=true,part_role=fluid_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=false,door_moving=true,part_role=fluid_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=true,door_moving=false,part_role=fluid_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=false,door_moving=false,part_role=fluid_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=true,door_moving=true,part_role=item_input": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=false,door_moving=true,part_role=item_input": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=true,door_moving=false,part_role=item_input": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=false,door_moving=false,part_role=item_input": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=true,door_moving=true,part_role=item_output": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=false,door_moving=true,part_role=item_output": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=true,door_moving=false,part_role=item_output": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=false,door_moving=false,part_role=item_output": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=true,door_moving=true,part_role=universal_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=false,door_moving=true,part_role=universal_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=true,door_moving=false,part_role=universal_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=false,door_moving=false,part_role=universal_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=true,door_moving=true,part_role=ladder": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=false,door_moving=true,part_role=ladder": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=true,door_moving=false,part_role=ladder": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=false,door_moving=false,part_role=ladder": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=true,door_moving=true,part_role=controller": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=false,door_moving=true,part_role=controller": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=true,door_moving=false,part_role=controller": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=west,open=false,door_moving=false,part_role=controller": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=true,door_moving=true,part_role=default": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=false,door_moving=true,part_role=default": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=true,door_moving=false,part_role=default": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=false,door_moving=false,part_role=default": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=true,door_moving=true,part_role=energy_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=false,door_moving=true,part_role=energy_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=true,door_moving=false,part_role=energy_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=false,door_moving=false,part_role=energy_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=true,door_moving=true,part_role=fluid_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=false,door_moving=true,part_role=fluid_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=true,door_moving=false,part_role=fluid_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=false,door_moving=false,part_role=fluid_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=true,door_moving=true,part_role=item_input": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=false,door_moving=true,part_role=item_input": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=true,door_moving=false,part_role=item_input": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=false,door_moving=false,part_role=item_input": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=true,door_moving=true,part_role=item_output": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=false,door_moving=true,part_role=item_output": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=true,door_moving=false,part_role=item_output": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=false,door_moving=false,part_role=item_output": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=true,door_moving=true,part_role=universal_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=false,door_moving=true,part_role=universal_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=true,door_moving=false,part_role=universal_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=false,door_moving=false,part_role=universal_connector": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=true,door_moving=true,part_role=ladder": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=false,door_moving=true,part_role=ladder": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=true,door_moving=false,part_role=ladder": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=false,door_moving=false,part_role=ladder": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=true,door_moving=true,part_role=controller": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=false,door_moving=true,part_role=controller": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=true,door_moving=false,part_role=controller": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    },
+    "facing=east,open=false,door_moving=false,part_role=controller": {
+      "model": "hbm_m:block/doors/silo_hatch"
+    }
+  }
+}

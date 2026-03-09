@@ -11,7 +11,6 @@ import com.hbm_m.block.entity.ModBlockEntities;
 import com.hbm_m.block.entity.doors.DoorBlockEntity;
 import com.hbm_m.block.entity.doors.DoorDecl;
 import com.hbm_m.block.entity.doors.DoorDeclRegistry;
-import com.hbm_m.item.ModItems;
 import com.hbm_m.multiblock.IMultiblockController;
 import com.hbm_m.multiblock.MultiblockStructureHelper;
 import com.hbm_m.multiblock.PartRole;
@@ -227,8 +226,7 @@ public class DoorBlock extends BaseEntityBlock implements IMultiblockController 
     }
 
     private static boolean hasScrewdriver(Player player) {
-        return player.getItemInHand(InteractionHand.MAIN_HAND).getItem() == ModItems.SCREWDRIVER.get()
-                || player.getItemInHand(InteractionHand.OFF_HAND).getItem() == ModItems.SCREWDRIVER.get();
+        return false;
     }
 
     @Override

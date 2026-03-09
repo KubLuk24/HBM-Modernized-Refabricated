@@ -7,7 +7,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -18,7 +17,6 @@ import java.util.function.Supplier;
 @OnlyIn(Dist.CLIENT)
 public class ClientSoundManager {
     
-    // Ключ теперь String, чтобы хранить "координаты_типЗвука"
     private static final Map<String, AbstractTickableSoundInstance> ACTIVE_SOUNDS = new ConcurrentHashMap<>();
     
     private static String getKey(BlockPos pos, String type) {
@@ -55,19 +53,12 @@ public class ClientSoundManager {
     }
 
     public static void stopSound(BlockPos pos) {
-        // Останавливаем все возможные типы звуков для этой позиции
         stopSpecificSound(pos, "loop1");
         stopSpecificSound(pos, "loop2");
-        stopSpecificSound(pos, "machine"); // для совместимости
     }
     
     public static void clearAll() {
         ACTIVE_SOUNDS.values().forEach(sound -> Minecraft.getInstance().getSoundManager().stop(sound));
         ACTIVE_SOUNDS.clear();
-    }
-
-    // Метод для старых машин
-    public static void updateSound(BlockEntity be, boolean shouldBePlaying, Supplier<? extends AbstractTickableSoundInstance> soundSupplier) {
-        updateDoorSound(be.getBlockPos(), "machine", shouldBePlaying, (Supplier<AbstractTickableSoundInstance>) soundSupplier);
     }
 }
